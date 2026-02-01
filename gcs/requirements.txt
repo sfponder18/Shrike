@@ -1,0 +1,16 @@
+# SwarmDrones GCS Requirements
+
+# Core UI
+PyQt5>=5.15.0
+
+# Future - MAVLink integration
+# pymavlink>=2.4.0
+
+# Future - Serial communication (T-Beam)
+# pyserial>=3.5
+
+# Future - Video streaming
+# opencv-python>=4.5.0
+
+# Development
+# pyinstaller  # For building standalone executable

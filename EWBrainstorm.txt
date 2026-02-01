@@ -1,0 +1,149 @@
+What emitters are present?
+
+How are they changing over time?
+
+Where (roughly) are they strongest?
+
+Are they affecting my systems or just “background RF”?
+
+2) Emitter characterization over raw power
+
+Raw RSSI/energy is useful, but ES becomes valuable when you can output:
+
+center frequency, bandwidth
+
+duty cycle / burst structure
+
+frequency agility / hopping indicators
+
+modulation “family” confidence (even coarse)
+
+stability over time (new vs persistent)
+
+Even if classification is imperfect, consistent descriptors are gold.
+
+3) ES drives EP decisions with evidence
+
+EP shouldn’t just say “GPS bad” or “link bad.”
+It should be able to say:
+
+“I’m seeing wideband noise near my control band”
+
+“Interference is narrowband and persistent at X”
+
+“GNSS shows AGC rise + C/N0 drop consistent with denial”
+
+“Nav inconsistency with RF calm suggests spoofing-like symptoms”
+(Still symptom-based, but much more informative.)
+
+A) Wideband scanning + “detected emitter list”
+
+Core ES product: a rolling table like:
+
+timestamp (and optionally lat/long/alt if available)
+
+frequency, bandwidth
+
+power proxy
+
+duty cycle
+
+persistence score (new/recurring)
+
+confidence score
+
+This becomes your “radar picture” of RF.
+
+B) Event-driven “zoom & record”
+
+Run the sweep until something trips a trigger:
+
+energy threshold
+
+sudden change
+
+match to known preamble/features (optional)
+
+unusual duty cycle patterns
+
+Then:
+
+dwell longer on that band
+
+capture higher-resolution I/Q or high-res PSD
+
+save a clip for later analysis/training
+C) Trend and anomaly detection
+
+ES is most useful when it tells you:
+
+“something changed”
+not just “here’s the spectrum.”
+
+Useful anomalies:
+
+New carrier appeared
+
+Band occupancy jumped
+
+Burst rate increased
+
+Broadband noise floor rose
+
+D) Highly accurate direction finding (DF) 
+
+ With multi-channel/multi-antenna/multi-aircraft, DF is the next leap:
+
+phase interferometry / TDOA-type methods (system-level)
+
+even coarse bearing helps correlate “this emitter” to geography
+
+But don’t start here unless you need it—get the emitter list + event capture right first.
+
+Treat receive time as a resource:
+
+Guard channels (control + GNSS) get guaranteed dwell
+
+Sweep gets the remaining budget
+
+Events preempt sweep but not guard
+
+2) Design the RF front end for measurement fidelity
+
+ES lives or dies on dynamic range and repeatability:
+
+switchable preselectors (avoid overload)
+
+LNA with bypass (avoid compression)
+
+stable reference clock (frequency accuracy)
+
+known gain states (so your “power proxy” is comparable over time)
+
+3) Logging format matters (so ES becomes reusable data)
+
+Log so you can build:
+
+RF maps
+
+training datasets
+
+post-mission playback
+
+Practical outputs:
+
+emitter list (CSV/JSON)
+
+event clips (short I/Q captures or high-res PSD)
+
+summary spectrograms (compressed)
+
+ES ↔ EP bridge (how ES feeds protection)
+
+If ES is 50%, EP becomes less “failsafe-y” and more informed:
+
+If ES sees interference centered on your link band → EP can recommend channel change, profile switch, or autonomy bias
+
+If ES sees RF calm but GNSS gets weird → EP treats nav as suspect (spoof-like symptoms) and gates GPS-dependent behaviors
+
+If ES sees a step rise in noise floor across bands → EP expects wider comms degradation and shifts mission plan accordingly

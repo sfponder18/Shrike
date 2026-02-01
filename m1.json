@@ -1,0 +1,76 @@
+{
+  "name": "New Mission",
+  "vehicle_id": "bird",
+  "waypoints": [
+    {
+      "id": 1,
+      "type": "WAYPOINT",
+      "lat": 51.99964599609375,
+      "lon": -1.49835205078125,
+      "alt": 100,
+      "param1": 0,
+      "param2": 0,
+      "name": ""
+    },
+    {
+      "id": 2,
+      "type": "LAUNCH_CHICK",
+      "lat": 52.00048828125,
+      "lon": -1.497265625,
+      "alt": 100,
+      "param1": 0,
+      "param2": 0,
+      "name": "Launch CHICK1"
+    },
+    {
+      "id": 3,
+      "type": "LAUNCH_CHICK",
+      "lat": 51.9995361328125,
+      "lon": -1.4965576171875,
+      "alt": 100,
+      "param1": 0,
+      "param2": 0,
+      "name": "Launch CHICK2"
+    },
+    {
+      "id": 4,
+      "type": "WAYPOINT",
+      "lat": 51.99835205078125,
+      "lon": -1.4975341796875,
+      "alt": 100,
+      "param1": 0,
+      "param2": 0,
+      "name": ""
+    },
+    {
+      "id": 5,
+      "type": "WAYPOINT",
+      "lat": 51.99835205078125,
+      "lon": -1.49976806640625,
+      "alt": 100,
+      "param1": 0,
+      "param2": 0,
+      "name": ""
+    },
+    {
+      "id": 6,
+      "type": "WAYPOINT",
+      "lat": 51.99859619140625,
+      "lon": -1.50185546875,
+      "alt": 100,
+      "param1": 0,
+      "param2": 0,
+      "name": ""
+    },
+    {
+      "id": 7,
+      "type": "WAYPOINT",
+      "lat": 51.999853515625,
+      "lon": -1.50260009765625,
+      "alt": 100,
+      "param1": 0,
+      "param2": 0,
+      "name": ""
+    }
+  ]
+}
